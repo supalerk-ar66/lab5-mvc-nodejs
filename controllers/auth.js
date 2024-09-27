@@ -26,7 +26,10 @@ module.exports = {
   
     loginUser: (req, res) => {
       // TODO: complete
-      res.redirect('login');
+      passport.authenticate('local', {
+        successRedirect: '/?loginsuccess',
+        failureRedirect: '/login?error'
+      })(req, res);
     },
   
     logoutUser: (req, res) => {
